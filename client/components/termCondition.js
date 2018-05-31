@@ -9,6 +9,7 @@ import { reactLocalStorage } from "reactjs-localstorage";
 import Config from '../surveyConfig';
 import langs from '../localization';
 import Checkbox from './checkbox';
+import {toastr} from 'react-redux-toastr';
 
 class TermCondition extends Component {
 
@@ -48,7 +49,7 @@ class TermCondition extends Component {
 	handleForm(e) {
 		e.preventDefault();
 		if (this.state.termCondition == false) {
-			alert("Please select terms & Condition.");
+            toastr.error('Error', 'Please select terms & Condition.');
 			return false;
 		}
 		this.setState({ loading: true });
@@ -77,7 +78,6 @@ class TermCondition extends Component {
 	|--------------------------------------------------------------------------
 	*/
 	handleCheckbox(e) {
-		console.log(e);
 		if (e.state.checked) {
 			this.setState({ termCondition: true });
 		} else {
@@ -115,7 +115,7 @@ class TermCondition extends Component {
 				<div className="inner">
 					{ this.renderBackButton }
 					<h1>{ langs.terms_condition_heading}</h1>
-					<div className="terms-condition-section" contentEditable='true' dangerouslySetInnerHTML={{ __html: langs.terms_condition }}></div>
+					<div className="terms-condition-section" dangerouslySetInnerHTML={{ __html: langs.terms_condition }}></div>
 					<form onSubmit={this.handleForm.bind(this)}>
 						<label>&nbsp;</label>
 						<Checkbox id="terms-condition-input" value="1" selected={selected} question={langs.terms_condition_label} label={langs.terms_condition_label} handleCheckbox={this.handleCheckbox.bind(this)} />

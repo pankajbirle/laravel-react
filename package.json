@@ -19,13 +19,14 @@
     "react-localization": "^1.0.10",
     "react-player": "^0.12.0",
     "react-redux": "^4.4.9",
+    "react-redux-toastr": "^7.2.6",
     "react-router": "^2.6.1",
     "react-world-flags": "^1.2.0",
     "reactjs-localstorage": "0.0.5",
     "redux": "^3.7.2",
     "redux-promise": "^0.5.3",
-    "uuid": "^3.2.1",
-    "webpack": "2.6.1"
+    "sass-loader": "^7.0.1",
+    "uuid": "^3.2.1"
   },
   "devDependencies": {
     "autoprefixer-loader": "^3.2.0",
@@ -39,12 +40,16 @@
     "babel-watch": "^2.0.7",
     "browser-sync": "^2.24.4",
     "compass": "^0.1.1",
+    "css-loader": "^0.28.11",
     "es6-promise": "^3.2.1",
     "gulp": "^3.9.1",
     "gulp-compass": "^2.1.0",
     "gulp-minify-css": "^1.2.4",
     "gulp-watch": "^4.3.9",
     "gulp-webpack": "^1.5.0",
+    "node-sass": "^4.9.0",
+    "style-loader": "^0.21.0",
+    "webpack": "^2.6.1",
     "webpack-dev-server": "^2.4.5"
   }
 }

@@ -1,0 +1,19 @@
+@import '~react-redux-toastr/src/styles/index';
+
+.contentWrapper {
+  background: $primaryColor;
+}
+
+
+.input-style {
+  border: 1px solid #e98595;
+  background: #f7f7f7;
+  background-size: 12px;
+  color: #252525;
+    input {
+      width: 100%;
+      border: none;
+      height: 41px;
+      padding-left: 10px !important;
+    }
+}

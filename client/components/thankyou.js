@@ -75,7 +75,7 @@ class Thankyou extends Component {
 			<section className={slideCSS}>
 	        		<div className="inner">
                         <h1>{langs.thank}</h1>
-						<p>{langs.thankyou}</p>
+						<p dangerouslySetInnerHTML={{ __html: langs.thankyou }}></p>
 						<p className="coupon">{this.renderCoupon()}</p>
                         <p>&nbsp;</p>
 					</div>

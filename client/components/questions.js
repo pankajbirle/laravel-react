@@ -25,10 +25,12 @@ class Questions extends Component {
 			loading: false,
 			answers: {},
 			multiples: {
+				q3: [],
 				q5: [],
 				q6: [],
 				q11: []
-			}
+			},
+			randomTitle: ''
 		}
 
 	}
@@ -62,6 +64,18 @@ class Questions extends Component {
 		}, 300);
 	}
 
+    /*
+    |--------------------------------------------------------------------------
+    | componentDidMount
+    |--------------------------------------------------------------------------
+    */
+	componentDidMount(){
+        if(Config.defaultBrand == "TwistedTea"){
+            this.randomTitle('q8');
+		}
+
+	}
+
 	/* 
 	|--------------------------------------------------------------------------
 	| handleForm - handles the posting of the form
@@ -90,6 +104,20 @@ class Questions extends Component {
 			//console.log(this.state);
 		});
 	}
+
+    /*
+    |--------------------------------------------------------------------------
+    | handleSelect - handles the drop down selectors
+    |--------------------------------------------------------------------------
+    */
+    handleNumberInput(e) {
+
+        let state = this.state;
+        state.answers[e.currentTarget.name] = e.currentTarget.value;
+        this.setState(state, () => {
+            //console.log(this.state);
+        });
+    }
 
 	/* 
 	|--------------------------------------------------------------------------
@@ -138,6 +166,19 @@ class Questions extends Component {
 		})
 	}
 
+	randomTitle(q){
+		let titleArray = langs.questions[q].title;
+        let rand = titleArray[Math.floor(Math.random() * titleArray.length)];
+        this.setState({randomTitle: rand});
+	}
+
+	checkLength(e){
+		let val = e.target.value;
+		if(val && val.length > 1){
+            e.preventDefault();
+		}
+	}
+
 	/* 
 	|--------------------------------------------------------------------------
 	| renderSwitch - renders the switch buttons
@@ -167,6 +208,15 @@ class Questions extends Component {
 				<Radio value="1" name={q} id={q + '_' + i} label={value} selected={selected} handleCheckbox={this.handleRadio.bind(this)} />
 			)
 		})
+	}
+
+	renderInput(q){
+		return (
+			<div className="input-style">
+				<input name="q2" type={'number'} onKeyPress={(event) => this.checkLength(event)} onChange={this.handleNumberInput.bind(this)} maxLength={3} min={1} max={150} />
+			</div>
+		)
+
 	}
 
 	/* 
@@ -304,74 +354,49 @@ class Questions extends Component {
 				<hr />
 
 				<label dangerouslySetInnerHTML={{ __html: langs.labels.q2 }}></label>
-				<div className="select-style">
-					<select name="q2" onChange={this.handleSelect.bind(this)}>
-						<option></option>
-						{this.renderSelect('q2')}
-					</select>
-				</div>
+				{this.renderInput('q2')}
 
 				<hr />
 				<label dangerouslySetInnerHTML={{ __html: langs.labels.q3 }}></label>
-				<div className="select-style">
-					<select name="q3" onChange={this.handleSelect.bind(this)}>
-						<option></option>
-						{this.renderSelect('q3')}
-					</select>
-				</div>
+                {this.renderSwitch('q3')}
 
 				<hr />
 
 				<label dangerouslySetInnerHTML={{ __html: langs.labels.q4 }}></label>
-				<div className="select-style">
-					<select name="q4" onChange={this.handleSelect.bind(this)}>
-						<option></option>
-						{this.renderSelect('q4')}
-					</select>
-				</div>
+                {this.renderRadio('q4')}
 
 				<hr />
 
 				<label dangerouslySetInnerHTML={{ __html: langs.labels.q5 }}></label>
-				{this.renderSwitch('q5')}
+                {this.renderRadio('q5')}
 
 				<hr />
 
 				<label dangerouslySetInnerHTML={{ __html: langs.labels.q6 }}></label>
-				{this.renderSwitch('q6')}
+				<div className="select-style">
+					<select name="q6" onChange={this.handleSelect.bind(this)}>
+						<option></option>
+                        {this.renderSelect('q6')}
+					</select>
+				</div>
 
 
 				<hr />
 
 				<label dangerouslySetInnerHTML={{ __html: langs.labels.q7 }}></label>
-				<label className="subLabel">{langs.questions.q7a.title}</label>
-				{this.renderRadio('q7a')}
-
-				<label className="subLabel">{langs.questions.q7b.title}</label>
-				{this.renderRadio('q7b')}
-
-				<label className="subLabel">{langs.questions.q7c.title}</label>
-				{this.renderRadio('q7c')}
-
-				<label className="subLabel">{langs.questions.q7d.title}</label>
-				{this.renderRadio('q7d')}
-
-				<label className="subLabel">{langs.questions.q7e.title}</label>
-				{this.renderRadio('q7e')}
-
-				<label className="subLabel">{langs.questions.q7f.title}</label>
-				{this.renderRadio('q7f')}
+				<div className="select-style">
+					<select name="q7" onChange={this.handleSelect.bind(this)}>
+						<option></option>
+                        {this.renderSelect('q7')}
+					</select>
+				</div>
 
 
 				<hr />
 
 				<label dangerouslySetInnerHTML={{ __html: langs.labels.q8 }}></label>
-				<div className="select-style">
-					<select name="q8" onChange={this.handleSelect.bind(this)}>
-						<option></option>
-						{this.renderSelect('q8')}
-					</select>
-				</div>
+				<label className="subLabel">{this.state.randomTitle}</label>
+                {this.renderRadio('q8')}
 
 				<hr />
 
@@ -396,7 +421,13 @@ class Questions extends Component {
 				<hr />
 
 				<label dangerouslySetInnerHTML={{ __html: langs.labels.q11 }}></label>
-				{this.renderSwitch('q11')}
+				<div className="select-style">
+					<select name="q11" onChange={this.handleSelect.bind(this)}>
+						<option></option>
+                        {this.renderSelect('q11')}
+					</select>
+				</div>
+
 			</div>
 		);
 	}
