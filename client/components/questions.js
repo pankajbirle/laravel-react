@@ -87,9 +87,17 @@ class Questions extends Component {
 
 		this.props.saveSurvey(this.state.answers, this.props.state.user.uuid);
 
-		setTimeout(() => {
-			this.props.history.replace('/video');
-		}, 1000);
+        if(Config.defaultBrand == "TwistedTea"){
+            setTimeout(() => {
+                this.props.history.replace('/thankyou');
+            }, 1000);
+        }else{
+            setTimeout(() => {
+                this.props.history.replace('/video');
+            }, 1000);
+		}
+
+
 	}
 
 	/* 
