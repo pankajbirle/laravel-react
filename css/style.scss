@@ -1,19 +1,36 @@
 @import '~react-redux-toastr/src/styles/index';
 
-.contentWrapper {
-  background: $primaryColor;
-}
-
-
 .input-style {
   border: 1px solid #e98595;
   background: #f7f7f7;
   background-size: 12px;
   color: #252525;
-    input {
-      width: 100%;
-      border: none;
-      height: 41px;
-      padding-left: 10px !important;
-    }
+  input {
+    width: 100%;
+    border: none;
+    height: 41px;
+    padding-left: 10px !important;
+  }
+}
+
+.TwistedTea .contentWrapper{
+  background: #fff;
+}
+
+.TwistedTea .select-style {
+  border: 1px solid #3540e9;
+}
+
+.TwistedTea hr {
+  border-top: 1px solid #3540e9;
+  border-bottom: 1px solid #fff;
+}
+
+.TwistedTea a.btn, button.btn, label.btn {
+  background: #3540e9;
+  color: #fff;
+}
+
+.TwistedTea .input-style {
+  border: 1px solid #3540e9;
 }

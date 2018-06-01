@@ -67,6 +67,7 @@ class Questions extends Component {
     /*
     |--------------------------------------------------------------------------
     | componentDidMount
+    | For random pick a question
     |--------------------------------------------------------------------------
     */
 	componentDidMount(){
@@ -115,7 +116,7 @@ class Questions extends Component {
 
     /*
     |--------------------------------------------------------------------------
-    | handleSelect - handles the drop down selectors
+    | handleNumberInput - handles the numeric input type
     |--------------------------------------------------------------------------
     */
     handleNumberInput(e) {
@@ -174,12 +175,22 @@ class Questions extends Component {
 		})
 	}
 
+    /*
+    |--------------------------------------------------------------------------
+    | randomTitle - random pick title
+    |--------------------------------------------------------------------------
+    */
 	randomTitle(q){
 		let titleArray = langs.questions[q].title;
         let rand = titleArray[Math.floor(Math.random() * titleArray.length)];
         this.setState({randomTitle: rand});
 	}
 
+    /*
+    |--------------------------------------------------------------------------
+    | checkLength - for numeric input to stop entering more than 2 numbers
+    |--------------------------------------------------------------------------
+    */
 	checkLength(e){
 		let val = e.target.value;
 		if(val && val.length > 1){
@@ -218,6 +229,11 @@ class Questions extends Component {
 		})
 	}
 
+    /*
+    |--------------------------------------------------------------------------
+    | renderInput - renders the numeric input
+    |--------------------------------------------------------------------------
+    */
 	renderInput(q){
 		return (
 			<div className="input-style">

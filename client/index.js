@@ -7,15 +7,17 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import reducers from './reducers';
 import {Router, hashHistory} from 'react-router';
-import '../css/variable.scss';
+import '../css/style.scss';
 
 import routes from './routes';
 import promise from 'redux-promise';
 import ReduxToastr from 'react-redux-toastr';
 
 import App from './components/app';
+import Config from "./surveyConfig";
 
 function getUrlVars() {
+	document.body.className = Config.defaultBrand;
 	var vars = {};
 	var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi,    
 	function(m,key,value) {

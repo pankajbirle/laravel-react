@@ -4,7 +4,7 @@ for(let i = 2007; i>1900; i--){
 }
 
 var Config = {
-    defaultBrand: "TwistedTea", /* Default, TwistedTea, JohnnieWalker */
+    defaultBrand: "Default", /* Default, TwistedTea, JohnnieWalker */
 
     languages: [{
         name: "English",
